@@ -1,11 +1,11 @@
 /*
  * @Author: xianglei
- * @Date: 2025-02-17 10:28:40
+ * @Date: 2025-02-20 05:17:46
  * @LastEditors: xianglei
- * @LastEditTime: 2025-02-17 11:08:10
- * @FilePath: \src\pages\Home.tsx
- * @Description:
+ * @LastEditTime: 2025-02-20 06:10:12
+ * @Description: 
  */
+
 const HomePage = () => {
   return (
     <>
@@ -13,4 +13,5 @@ const HomePage = () => {
     </>
   );
 };
+
 export default HomePage;

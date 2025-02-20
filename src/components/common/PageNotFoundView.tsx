@@ -1,57 +1,56 @@
 /*
  * @Author: xianglei
- * @Date: 2025-02-17 10:27:08
+ * @Date: 2025-02-20 05:17:46
  * @LastEditors: xianglei
- * @LastEditTime: 2025-02-17 11:04:58
- * @FilePath: \src\components\common\PageNotFoundView.tsx
+ * @LastEditTime: 2025-02-20 05:54:27
  * @Description: 
  */
-import { FileQuestion } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Home, ArrowLeft } from "lucide-react";
 
 const PageNotFoundView = () => {
-  const navigate = useNavigate()
+  const goHome = () => {
+    window.location.href = '/';
+  };
+
+  const goBack = () => {
+    window.history.back();
+  };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center bg-white dark:bg-gray-900">
-      <div className="container px-4 md:px-6 flex flex-col items-center text-center space-y-4">
+    <div className="min-h-screen bg-white dark:bg-gray-900 flex flex-col items-center justify-center p-4">
+      <div className="text-center space-y-6 max-w-md">
+        {/* 404 大数字 */}
+        <h1 className="text-8xl font-bold text-blue-600 dark:text-blue-500">404</h1>
+        
+        {/* 错误信息 */}
         <div className="space-y-2">
-          <FileQuestion 
-            className="h-24 w-24 text-gray-400 dark:text-gray-500 mx-auto" 
-            aria-hidden="true"
-          />
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-gray-900 dark:text-white">
-            页面未找到
-          </h1>
-          <p className="max-w-[600px] text-gray-500 md:text-xl/relaxed dark:text-gray-400">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">页面未找到</h2>
+          <p className="text-gray-600 dark:text-gray-400">
             抱歉，您访问的页面不存在或已被移除。
           </p>
         </div>
-        <div className="space-x-4">
+
+        {/* 操作按钮 */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <button 
-            onClick={() => navigate("/")} 
-            className="inline-flex h-10 items-center justify-center rounded-md px-8
-                     bg-blue-600 text-white hover:bg-blue-700 
-                     dark:bg-blue-500 dark:hover:bg-blue-600
-                     transition-colors duration-200"
+            onClick={goHome}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:hover:bg-blue-600 dark:focus:ring-offset-gray-900"
           >
+            <Home size={16} />
             返回首页
           </button>
+          
           <button 
-            onClick={() => navigate(-1)}
-            className="inline-flex h-10 items-center justify-center rounded-md px-8
-                     border border-gray-200 bg-white text-gray-900
-                     hover:bg-gray-100 hover:text-gray-900
-                     dark:border-gray-800 dark:bg-gray-950 dark:text-gray-50
-                     dark:hover:bg-gray-800 dark:hover:text-gray-50
-                     transition-colors duration-200"
+            onClick={goBack}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-offset-gray-900"
           >
+            <ArrowLeft size={16} />
             返回上页
           </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PageNotFoundView
+export default PageNotFoundView;
