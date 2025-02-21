@@ -1,10 +1,17 @@
+/*
+ * @Author: xianglei
+ * @Date: 2025-02-20 05:17:46
+ * @LastEditors: xianglei
+ * @LastEditTime: 2025-02-21 14:04:24
+ * @Description: 
+ */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve, join } = require('path');
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
 const notifier = require('node-notifier');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const port = 3003;
+const port = 3005;
 module.exports = {
   devServer: {
     historyApiFallback: true,
