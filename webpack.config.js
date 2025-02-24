@@ -54,6 +54,12 @@ const webpackBaseConfig = {
       },
     ],
   },
+   optimization: {
+    runtimeChunk: {
+      name: 'runtime',
+    },
+    splitChunks: {},
+  },
   resolve: {
     alias: {
       '@': resolve('src/'),

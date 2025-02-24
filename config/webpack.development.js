@@ -2,7 +2,7 @@
  * @Author: xianglei
  * @Date: 2025-02-20 05:17:46
  * @LastEditors: xianglei
- * @LastEditTime: 2025-02-21 14:04:24
+ * @LastEditTime: 2025-02-22 19:42:39
  * @Description: 
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -60,6 +60,6 @@ module.exports = {
       },
       clearConsole: true,
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
   ],
 };
