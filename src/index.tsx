@@ -8,6 +8,7 @@
  */
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import './wdyr';
 import './style.css';
 import App from "@pages/App";
 

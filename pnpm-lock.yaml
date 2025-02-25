@@ -29,6 +29,9 @@ importers:
       '@web3-react/metamask':
         specifier: ^8.2.4
         version: 8.2.4(@types/react@19.0.9)(immer@10.1.1)(react@19.0.0)
+      '@welldone-software/why-did-you-render':
+        specifier: ^10.0.1
+        version: 10.0.1(react@19.0.0)
       connectkit:
         specifier: ^1.8.2
         version: 1.8.2(@babel/core@7.26.9)(@tanstack/react-query@5.66.3(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react-is@19.0.0)(react@19.0.0)(viem@2.23.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)(zod@3.23.8))(wagmi@2.14.11(@tanstack/query-core@5.66.3)(@tanstack/react-query@5.66.3(react@19.0.0))(@types/react@19.0.9)(bufferutil@4.0.9)(immer@10.1.1)(react@19.0.0)(utf-8-validate@5.0.10)(viem@2.23.2(bufferutil@4.0.9)(utf-8-validate@5.0.10)(zod@3.23.8))(zod@3.23.8))
@@ -1376,6 +1379,11 @@ packages:
     peerDependenciesMeta:
       webpack-dev-server:
         optional: true
+
+  '@welldone-software/why-did-you-render@10.0.1':
+    resolution: {integrity: sha512-tMgGkt30iVYeLMUKExNmtm019QgyjLtA7lwB0QAizYNEuihlCG2eoAWBBaz/bDeI7LeqAJ9msC6hY3vX+JB97g==}
+    peerDependencies:
+      react: ^19
 
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
@@ -7406,6 +7414,11 @@ snapshots:
       webpack-cli: 6.0.1(webpack-bundle-analyzer@4.10.2(bufferutil@4.0.9)(utf-8-validate@5.0.10))(webpack-dev-server@5.2.0)(webpack@5.98.0)
     optionalDependencies:
       webpack-dev-server: 5.2.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)(webpack-cli@6.0.1)(webpack@5.98.0)
+
+  '@welldone-software/why-did-you-render@10.0.1(react@19.0.0)':
+    dependencies:
+      lodash: 4.17.21
+      react: 19.0.0
 
   '@xtuc/ieee754@1.2.0': {}
 
