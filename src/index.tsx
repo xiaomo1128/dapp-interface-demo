@@ -1,11 +1,3 @@
-/*
- * @Author: xianglei
- * @Date: 2025-02-20 05:17:46
- * @LastEditors: xianglei
- * @LastEditTime: 2025-02-20 05:33:38
- * @FilePath: /src/index.tsx
- * @Description:
- */
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import './wdyr';

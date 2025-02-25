@@ -1,7 +1,11 @@
 import { useImmer } from "@/hooks/useImmer";
+import { todoCountAtom } from "@/states";
+import { useAtom } from "jotai";
 import { useEffect, useState } from "react";
 
- function Test() {
+function Test() {
+  const [count, setCount] = useAtom(todoCountAtom); // 使用jotai的atom
+
   const [user, setUser] = useImmer({
     name: "John",
     age: 25,
@@ -43,10 +47,10 @@ import { useEffect, useState } from "react";
   const handleCorrectUpdate = () => {
     setUser((draft) => {
       draft.age += 1;
-      draft.scores ={
+      draft.scores = {
         math: 90,
         english: 85,
-      }
+      };
       draft.name = `John${draft.scores}`;
     });
 
