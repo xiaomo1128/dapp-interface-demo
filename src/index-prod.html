@@ -4,25 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    </style>
+    <!-- React 19 和相关库只能通过 ESM 方式引入 -->
+    <script type="module">
+      // 导入 React 库
+      import React from "https://esm.sh/react@19.0.0";
+      import * as ReactDOM from "https://esm.sh/react-dom@19.0.0";
+      import * as ReactRouterDOM from "https://esm.sh/react-router-dom@7.1.5";
+
+      // 使全局可用，以便在 webpack externals 中使用
+      window.React = React;
+      window.ReactDOM = ReactDOM;
+      window.ReactRouterDOM = ReactRouterDOM;
+    </script>
   </head>
   <body>
-    <div id="app">  
-      loading....
-    </div>
-      <!-- Service Worker 注册脚本 -->
-      <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('SW registered:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.log('SW registration failed:', error);
-                    });
+    <div id="app">loading....</div>
+    <!-- Service Worker 注册脚本 -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then((registration) => {
+              console.log("SW registered:", registration.scope);
+            })
+            .catch((error) => {
+              console.log("SW registration failed:", error);
             });
-        }
-      </script>
+        });
+      }
+    </script>
+    <!-- 引入 dist/manifest.json 资源文件 -->
+    <!-- <script src="/manifest.json"></script> -->
+     <!-- 引入猜路由的脚本 + quicklink -->
   </body>
 </html>

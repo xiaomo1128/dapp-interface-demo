@@ -1,10 +1,3 @@
-/*
- * @Author: xianglei
- * @Date: 2025-02-20 05:17:46
- * @LastEditors: xianglei
- * @LastEditTime: 2025-02-22 19:42:39
- * @Description: 
- */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { resolve, join } = require('path');
 const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin');
@@ -60,6 +53,8 @@ module.exports = {
       },
       clearConsole: true,
     }),
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({
+      analyzerPort: 3006,
+    }),
   ],
 };

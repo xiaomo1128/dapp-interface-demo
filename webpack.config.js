@@ -6,6 +6,7 @@ const _mergeConfig = require(`./config/webpack.${_mode}.js`);
 const _modeflag = _mode === "production" ? true : false;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const Dotenv = require("dotenv-webpack");
 // const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 // const WebpackBar = require('webpackbar');
@@ -50,7 +51,57 @@ const webpackBaseConfig = {
     runtimeChunk: {
       name: "runtime",
     },
-    splitChunks: {},
+    splitChunks: {
+      chunks: "all",
+      // maxInitialRequests: 3,
+      // name: true,
+      // maxAsyncRequests: 3,
+      cacheGroups: {
+        // 剩下没有扫描到的，不管同步/异步 都放在这里
+        commons: {
+          chunks: "all",
+          name: "chunk-common",
+          minChunks: 2,
+          maxInitialRequests: 5,
+          priority: 1,
+          enforce: true,
+          reuseExistingChunk: true,
+        },
+        // 其余node_modules下面的包 第三方库
+        vendors: {
+          name: "chunk-vendors",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "initial",
+          priority: 2,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        uiComponent: {
+          name: "chunk-components",
+          test: /([\\/]node_modules[\\/]@mui[\\/].+\w)|(src[\\/]components[\\/]common)|([\\/]node_modules[\\/]@sicang[\\/]components)/,
+          chunks: "all",
+          priority: 4,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        ethersSDK: {
+          name: "chunk-web3-sdk",
+          test: /[\\/]node_modules[\\/](ethers*\w|@ethersproject*\w|@web3-react*\w)/,
+          chunks: "all",
+          priority: 5,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+        reactLibs: {
+          name: "chunk-react-libs",
+          test: /[\\/]node_modules[\\/](react|react.+\w)/,
+          chunks: "all",
+          priority: 6,
+          reuseExistingChunk: true,
+          enforce: true,
+        },
+      },
+    },
   },
   resolve: {
     alias: {
@@ -87,6 +138,10 @@ const webpackBaseConfig = {
       ignoreOrder: false,
     }),
     new ThemedProgressPlugin(),
+    // 生成资源清单文件 拆包分析
+    new WebpackManifestPlugin({
+      fileName: 'manifest.json',
+    }),
   ],
 };
 module.exports = merge.default(webpackBaseConfig, _mergeConfig);
